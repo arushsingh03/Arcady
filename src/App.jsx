@@ -1,11 +1,11 @@
-import "./App.css";
+import Hero from './components/hero'
 
-function App() {
+const App = () => {
   return (
-    <>
-      <div>THIS IS ARUSH</div>
-    </>
-  );
+    <main className="relative min-h-screen w-screen overflow-x-hidden">
+      <Hero />
+    </main>
+  )
 }
 
-export default App;
+export default App
