@@ -32,7 +32,10 @@ const About = () => {
           Step into the World of Arcady!
         </h2>
 
-        <AnimatedTitle />
+        <AnimatedTitle
+          title="Emb<b>a</b>rk on the World’s <br /> B<b>o</b>ldest Shared Adventure!"
+          containerClass="mt-5 !text-black text-center"
+        />
 
         <div className="about-subtext">
           <p>
