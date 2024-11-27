@@ -50,6 +50,25 @@ body {
   .floating-nav {
     @apply bg-black rounded-lg border;
   }
+  .tooltip-enter {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  .tooltip-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 200ms, transform 200ms;
+  }
+
+  .tooltip-exit {
+    opacity: 1;
+  }
+
+  .tooltip-exit-active {
+    opacity: 0;
+    transition: opacity 200ms;
+  }
 
   .absolute-center {
     @apply absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%];
@@ -269,5 +288,15 @@ body {
   50% {
     transform: translateY(66%) scale(0.65);
     opacity: 0.8;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
