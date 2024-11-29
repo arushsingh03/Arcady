@@ -9,6 +9,13 @@ import Dialog from "./Dialog";
 const navItems = ["Nexus", "Vault", "Prologue", "About", "Contact"];
 
 const Navbar = () => {
+  const redirectToHero = () => {
+    const heroSection = document.getElementById("nexus");
+    if (heroSection) {
+      heroSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [isIndicatorActive, setIsIndicatorActive] = useState(false);
   const [showMusicPrompt, setShowMusicPrompt] = useState(false);
@@ -93,7 +100,9 @@ const Navbar = () => {
         <header className="absolute top-1/2 w-full -translate-y-1/2">
           <nav className="flex size-full items-center justify-between p-4">
             <div className="flex items-center gap-7">
-              <img src="/img/logo.png" alt="logo" className="w-10" />
+              <button onClick={redirectToHero}>
+                <img src="/img/logo.png" alt="logo" className="w-10" />
+              </button>
 
               <Button
                 id="product-button"
