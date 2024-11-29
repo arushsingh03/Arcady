@@ -28,6 +28,7 @@ const BentoTilt = ({ children, className = "" }) => {
 
   return (
     <div
+      id="vault"
       className={className}
       ref={itemRef}
       onMouseMove={handleMouseMove}

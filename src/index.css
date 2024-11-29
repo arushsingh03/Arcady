@@ -300,3 +300,36 @@ body {
     transform: translateY(0);
   }
 }
+.gradient-arcady {
+  background: linear-gradient(90deg, #00aeff, #fcfcfc, #00aeff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #00aeff, 0 0 10px #fcfcfc, 0 0 15px #00aeff;
+  }
+  100% {
+    text-shadow: 0 0 15px #00aeff, 0 0 20px #fcfcfc, 0 0 25px #00aeff;
+  }
+}
+.gradient-button {
+  background: linear-gradient(90deg, #165979, #fcfcfc, #206180);
+  color: black;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  text-align: center;
+  display: inline-block;
+}
+
+.gradient-button:hover {
+  background: linear-gradient(90deg, #0d648d, #fcfcfc, #0c6188);
+}

@@ -6,15 +6,17 @@ import { useEffect, useRef, useState } from "react";
 
 import Button from "./Button";
 import VideoPreview from "./VideoPreview";
+import VideoPlayer from "./VideoPlayer"; // Import the VideoPlayer component
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [hasClicked, setHasClicked] = useState(false);
-
   const [loading, setLoading] = useState(true);
   const [loadedVideos, setLoadedVideos] = useState(0);
+  const [showVideoPlayer, setShowVideoPlayer] = useState(false); // State to manage video player visibility
+  const [videoPlayerIndex, setVideoPlayerIndex] = useState(1); // State to manage the current video index in the player
 
   const totalVideos = 4;
   const nextVdRef = useRef(null);
@@ -31,7 +33,6 @@ const Hero = () => {
 
   const handleMiniVdClick = () => {
     setHasClicked(true);
-
     setCurrentIndex((prevIndex) => (prevIndex % totalVideos) + 1);
   };
 
@@ -82,8 +83,28 @@ const Hero = () => {
 
   const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
 
+  const handleWatchTrailer = () => {
+    setVideoPlayerIndex(currentIndex);
+    setShowVideoPlayer(true);
+  };
+
+  const handleCloseVideoPlayer = () => {
+    setShowVideoPlayer(false);
+    setVideoPlayerIndex(1);
+  };
+
+  const handleNextVideo = () => {
+    setVideoPlayerIndex((prevIndex) => (prevIndex % totalVideos) + 1);
+  };
+
+  const handlePrevVideo = () => {
+    setVideoPlayerIndex((prevIndex) =>
+      prevIndex === 1 ? totalVideos : prevIndex - 1
+    );
+  };
+
   return (
-    <div className="relative h-dvh w-screen overflow-x-hidden">
+    <div id="nexus" className="relative h-dvh w-screen overflow-x-hidden">
       {loading && (
         <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
           {/* https://uiverse.io/G4b413l/tidy-walrus-92 */}
@@ -151,7 +172,7 @@ const Hero = () => {
             </h1>
 
             <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
-              Dive into the Metagame Layer Unleash the Power of Play 
+              Dive into the Metagame Layer Unleash the Power of Play
             </p>
 
             <Button
@@ -159,6 +180,7 @@ const Hero = () => {
               title="Watch trailer"
               leftIcon={<TiLocationArrow />}
               containerClass="!bg-yellow-300 flex-center gap-1"
+              onClick={handleWatchTrailer} // Handle button click
             />
           </div>
         </div>
@@ -167,6 +189,17 @@ const Hero = () => {
       <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black">
         G<b>A</b>MING
       </h1>
+
+      {showVideoPlayer && (
+        <VideoPlayer
+          videoSrc={getVideoSrc(videoPlayerIndex)}
+          onClose={handleCloseVideoPlayer}
+          onNext={handleNextVideo}
+          onPrev={handlePrevVideo}
+          totalVideos={totalVideos}
+          currentIndex={videoPlayerIndex}
+        />
+      )}
     </div>
   );
 };
