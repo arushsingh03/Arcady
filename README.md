@@ -61,8 +61,7 @@ Make sure you have the following installed on your system:
 1. **Clone the Repository**  
    Clone the Arcady repository to your local machine using the command:  
    ```bash
-   git clone https://github.com/your-username/arcady.git
-
+   git clone https://github.com/arushsingh03/Arcady
 ### Navigate to the Project Directory
 #### Change to the project's directory:
 
